@@ -1,0 +1,95 @@
+Task 1
+// Implement a Kth Largest Element in an Array
+// Find the Kth largest element in an unsorted array. Note that it is the Kth largest element in
+// sorted order, not the Kth distinct element.
+
+function findKthLargest (arr, k) {
+    arr.sort((a, b) => b - a)
+    return arr[k - 1]
+}
+
+Task 3
+// Implement an Anagram Grouping
+// Given an array of strings, group anagrams together.
+
+function groupAnagrams(strs) {
+    const anagrams = {};
+
+    for (let str of strs) {
+        const sortedStr = str.split('').sort().join('');
+        if (anagrams[sortedStr]) {
+            anagrams[sortedStr].push(str);
+        } else {
+            anagrams[sortedStr] = [str];
+        }
+    }
+
+    return Object.values(anagrams);
+}
+
+const strs = ["eat", "tea", "tan", "ate", "nat", "bat"];
+const groupedAnagrams = groupAnagrams(strs);
+
+const arr = [3, 2, 1, 5, 6, 4];
+const k = 2;
+const result = findKthLargest(arr, k)
+
+Task 5
+// Array Sum Using IIFE
+// Write an IIFE to calculate the sum of all elements in an array
+
+const sum = (function (arr) {
+    return arr.reduce((a, b) => a + b, 0)}) ([1, 2, 3, 4, 5])
+
+Task 6
+// Filter Even Numbers Using IIFE
+// Write an IIFE to filter out even numbers from an array
+
+const even = (function (arr) {
+    return arr.filter(elem => elem % 2 === 0)
+}) ([1, 2, 3, 4, 5, 6])
+
+Task 7
+// Reverse String Using IIFE
+// Write an IIFE to reverse a string
+
+// Solution 1
+const str = 'hello'
+const reversed = (function (str) {
+    return str.split('').reverse().join()
+}) (str)
+
+// Solution 2
+const str = 'hello'
+const reversed = (function (str) {
+    let clone = '';
+    for (let i = str.length - 1; i >= 0; i--) {
+        clone += str[i]
+    }
+    return clone
+}) (str)
+
+Task 8
+// Implement find index array method
+
+function findIndex(arr, cllBckFn) {
+    const elem = arr.find(cllBckFn);
+    return arr.indexOf(elem)
+}
+
+const arr = [5, 12, 8, 130, 44];
+const index = findIndex(arr, function (elem) {
+    return elem > 10
+})
+
+Task 9
+// Implement filter method
+
+function simpleFilter (arr, cllBckFn) {
+    return arr.filter(cllBckFn);
+}
+
+const numbers = [1, 2, 3, 4, 5, 6];
+const evenNumbers = simpleFilter(numbers, function (elem) {
+    return elem % 2 === 0
+})
